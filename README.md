@@ -11,7 +11,7 @@ dotnet restore
 ```
 3. Run
 ```
-dotnet run
+press F5 in visual studio
 ```
 
 The application will then be accessible at:
