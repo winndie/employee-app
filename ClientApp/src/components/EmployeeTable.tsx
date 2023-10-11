@@ -26,7 +26,7 @@ const EmployeeTable: React.FC = () => {
                     {editing ? <></> :<th scope="col">Actions</th>}
                 </tr></thead>
                 <tbody>
-                    {list.length === 0 ? <tr>No record found</tr> :
+                    {list.length === 0 ? <tr><td>No record found</td></tr> :
                         list.map((x, i) => (
                             <tr key={i}>
                                 <th className='align-middle'>{x.id}</th>

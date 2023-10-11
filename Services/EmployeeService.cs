@@ -53,11 +53,11 @@ namespace InterviewTest.Services
 
                 while (reader.Read())
                 {
-                    employees.Add(new Models.Employee (reader));
+                    employees.Add(new Models.Employee (reader,Param));
                 }
 
                 result = new ServiceResult<GetEmployeesResponse>(
-                    new GetEmployeesResponse(employees, Param.PageSize, Param.DisplaySum));
+                    new GetEmployeesResponse(employees, Param));
             }
 
             return result;

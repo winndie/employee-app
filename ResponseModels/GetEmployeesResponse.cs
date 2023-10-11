@@ -1,4 +1,5 @@
 ﻿using InterviewTest.Models;
+using InterviewTest.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,13 @@ namespace InterviewTest.ResponseModels
         private int _sum, _displaySum;
 
         public GetEmployeesResponse() { }
-        public GetEmployeesResponse(List<Employee> employees, int pageSize, int displaySum) {
+        public GetEmployeesResponse(List<Employee> employees, ServiceParam serviceParam) {
+
             Employees = employees;
-            PageSize = pageSize;
-            _displaySum = displaySum;
+            PageSize = serviceParam.PageSize;
+            _displaySum = serviceParam.DisplaySum;
             _sum = Employees
-                    .Where(x => x.Name.StartsWith("A") || x.Name.StartsWith("B") || x.Name.StartsWith("C"))
+                    .Where(x => x.Name.Length > 0 && serviceParam.SumValueOfNames.Contains(x.Name.ElementAt<char>(0)))
                     .Sum(x => x.Value);
         }
         public List<Employee> Employees { get; } = new List<Employee>();

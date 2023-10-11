@@ -6,6 +6,8 @@ using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace InterviewTest
 {
@@ -15,11 +17,14 @@ namespace InterviewTest
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
             Param = new ServiceParam
             (
                 new SqliteConnectionStringBuilder(Configuration.GetConnectionString("DefaultConnection")).ConnectionString,
                 configuration.GetValue<int>("PageSize"),
-                configuration.GetValue<int>("DisplaySum")
+                configuration.GetValue<int>("DisplaySum"),
+                configuration.GetSection("SumValueOfNames").Get<string[]>().Select(x => x.ElementAt<char>(0)).ToList(),
+                configuration.GetSection("AddValueByNames").Get<Dictionary<string, int>>()
             );
             PrepareDB();
         }
