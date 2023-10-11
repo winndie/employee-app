@@ -15,7 +15,7 @@ namespace InterviewTest.Tests
 
         public EmployeesTest() {
             serviceParam = new ServiceParam(
-                "connectionString", 5, 11171,
+                "connectionString", 5, 11171,100,
                 new List<char> { 'A', 'B', 'C' },
                 new Dictionary<string, int>() { { "E", 1 }, { "G", 10 } }
                 );

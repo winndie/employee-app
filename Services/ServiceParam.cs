@@ -8,12 +8,14 @@ namespace InterviewTest.Services
         public ServiceParam(string connectionString,
             int pageSize,
             int displaySum,
+            int defaultValueAdded,
             List<char> sumValueOfNames,
             Dictionary<string,int> addValueByNames) {
 
             ConnectionString = connectionString;
             PageSize = pageSize;
             DisplaySum = displaySum;
+            DefaultValueAdded = defaultValueAdded;
             SumValueOfNames = sumValueOfNames;
             AddValueByNames = addValueByNames.ToDictionary(x => x.Key.ElementAt<char>(0), x => x.Value);
         }
@@ -22,5 +24,6 @@ namespace InterviewTest.Services
         public readonly int DisplaySum;
         public readonly List<char> SumValueOfNames;
         public readonly Dictionary<char,int> AddValueByNames;
+        public readonly int DefaultValueAdded;
     }
 }

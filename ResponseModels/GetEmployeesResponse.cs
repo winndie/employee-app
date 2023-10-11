@@ -8,31 +8,24 @@ namespace InterviewTest.ResponseModels
 {
     public class GetEmployeesResponse
     {
-        private int _sum, _displaySum;
-
         public GetEmployeesResponse() { }
         public GetEmployeesResponse(List<Employee> employees, ServiceParam serviceParam) {
 
             Employees = employees;
             PageSize = serviceParam.PageSize;
-            _displaySum = serviceParam.DisplaySum;
-            _sum = Employees
+            Sum = Employees
                     .Where(x => x.Name.Length > 0 && serviceParam.SumValueOfNames.Contains(x.Name.ElementAt<char>(0)))
                     .Sum(x => x.Value);
+            IsDisplaySum = Sum >= serviceParam.DisplaySum;
+            LastPage = (int)Math.Ceiling((decimal)Employees.Count / PageSize);
         }
         public List<Employee> Employees { get; } = new List<Employee>();
 
         public int PageSize { get; }
-        public int Sum { get {
-                return _sum;
-            } }
+        public int Sum { get; }
 
-        public int LastPage { get {
-                return (int)Math.Ceiling((decimal)Employees.Count / PageSize);
-            } }
+        public int LastPage { get; }
 
-        public bool IsDisplaySum { get { 
-                return _sum >= _displaySum;
-            } }
+        public bool IsDisplaySum { get; }
     }
 }

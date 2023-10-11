@@ -23,6 +23,7 @@ namespace InterviewTest
                 new SqliteConnectionStringBuilder(Configuration.GetConnectionString("DefaultConnection")).ConnectionString,
                 configuration.GetValue<int>("PageSize"),
                 configuration.GetValue<int>("DisplaySum"),
+                configuration.GetValue<int>("DefaultValueAdded"),
                 configuration.GetSection("SumValueOfNames").Get<string[]>().Select(x => x.ElementAt<char>(0)).ToList(),
                 configuration.GetSection("AddValueByNames").Get<Dictionary<string, int>>()
             );
