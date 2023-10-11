@@ -7,7 +7,7 @@
 1. Clone this repository onto your machine
 2. Install
 ```
-dotnet restore
+press Ctrl + Shift + B in visual studio
 ```
 3. Run
 ```
