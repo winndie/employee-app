@@ -27,3 +27,5 @@ dotnet test
 - [X] C# ASP.Net 6.0
 - [X] Sqlite
 - [X] Node.js
+- [X] React 16
+- [X] Redux
